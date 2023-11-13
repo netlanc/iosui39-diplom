@@ -20,6 +20,7 @@ class HabitDetailsCollectionViewCell: UITableViewCell {
     }
     
     func setupCell(_ indexCell: Int, _ indexHabit: Int) {
+
         
         let dateHabit: [Date] = HabitsStore.shared.dates.reversed()
         
@@ -27,12 +28,22 @@ class HabitDetailsCollectionViewCell: UITableViewCell {
             HabitsStore.shared.habits[indexHabit],
             isTrackedIn: dateHabit[indexCell]
         ) ? .checkmark : .none
+        
+        let today = Calendar.current.startOfDay(for: Date())
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today) ?? Date()
+        let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -1, to: yesterday) ?? Date()
+        
+        let habitDate = dateHabit[indexCell]
+        print("habitDate", habitDate)
 
-        switch indexCell {
-            case 0: textLabel?.text = "Сегодня"
-            case 1: textLabel?.text = "Вчера"
-            case 2: textLabel?.text = "Позавчера"
-            default: textLabel?.text = formatter.string(from: dateHabit[indexCell])
+        if Calendar.current.isDateInToday(habitDate) {
+            textLabel?.text = "Сегодня"
+        } else if Calendar.current.isDateInYesterday(habitDate) {
+            textLabel?.text = "Вчера"
+        } else if Calendar.current.isDate(dayBeforeYesterday, inSameDayAs: habitDate) {
+            textLabel?.text = "Позавчера"
+        } else {
+            textLabel?.text = formatter.string(from: habitDate)
         }
         
     }

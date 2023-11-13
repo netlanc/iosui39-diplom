@@ -1,15 +1,13 @@
 import UIKit
 
 
-protocol HabitsCreateDelegate: AnyObject {
+protocol HabitsDelegate: AnyObject {
     func habitCreate()
-}
-
-protocol ProgressBarUpdateDelegate: AnyObject {
+    
     func reloadProgressBar()
 }
 
-extension HabitsViewController: HabitsCreateDelegate, HabitDetailsDeleteDelegate, ProgressBarUpdateDelegate, HabitDetailsUpdateDelegate {
+extension HabitsViewController: HabitsDelegate, HabitDetailsDelegate {
     
     func habitCreate() {
         self.collectionView.reloadData()
@@ -25,9 +23,8 @@ extension HabitsViewController: HabitsCreateDelegate, HabitDetailsDeleteDelegate
     }
     
     func habitDetailUpdate(habit: Habit, at index: Int) {
-        print(index)
-        self.collectionView.reloadData()
-//        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 1)])
+//        self.collectionView.reloadData()
+        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 1)])
     }
 }
 
@@ -98,7 +95,7 @@ class HabitsViewController: UIViewController {
     @objc private func newHabit() {
         let habitViewController = HabitViewController(habit: nil, index: nil)
         
-        habitViewController.habitCreateDelegate = self
+        habitViewController.habitsDelegate = self
         
         let navigationHabitController = UINavigationController(rootViewController: habitViewController)
         navigationHabitController.modalPresentationStyle = .fullScreen
@@ -146,8 +143,8 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         
         if indexPath.section > 0 {
             let habitDetailsViewController = HabitDetailsViewController(index: indexPath.row)
-            habitDetailsViewController.habitDetailsUpdateDelegate = self
-            habitDetailsViewController.habitDetailsDeleteDelegate = self
+            habitDetailsViewController.habitDetailsDelegate = self
+//            habitDetailsViewController.habitDetailsDeleteDelegate = self
             navigationController?.pushViewController(habitDetailsViewController, animated: false)
             
         }

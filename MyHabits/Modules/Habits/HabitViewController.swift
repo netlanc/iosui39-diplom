@@ -2,9 +2,8 @@ import UIKit
 
 class HabitViewController: UIViewController {
     
-    weak var habitCreateDelegate: HabitsCreateDelegate?
-    weak var habitUpdateDelegate: HabitDetailsUpdateDelegate?
-    weak var habitDeleteDelegate: HabitDetailsDeleteDelegate?
+    weak var habitsDelegate: HabitsDelegate?
+    weak var habitDetailsDelegate: HabitDetailsDelegate?
     
     private var index: Int?
     private var titleHabit: String?
@@ -314,7 +313,7 @@ class HabitViewController: UIViewController {
     @objc private func deleteHabit(_ index: Int) {
         self.dismiss(animated: true)
         HabitsStore.shared.habits.remove(at: index)
-        habitDeleteDelegate?.habitDetailDelete(at: index)
+        habitDetailsDelegate?.habitDetailDelete(at: index)
     }
     
     @objc private func saveHabit() {
@@ -337,7 +336,7 @@ class HabitViewController: UIViewController {
             
             storeHabits.habits.append(newHabit)
             
-            habitCreateDelegate?.habitCreate()
+            habitsDelegate?.habitCreate()
             
         } else {
             
@@ -347,7 +346,7 @@ class HabitViewController: UIViewController {
             
             storeHabits.habits[index!] = currentHabit!
             
-            habitUpdateDelegate?.habitDetailUpdate(habit: currentHabit!, at: index!)
+            habitDetailsDelegate?.habitDetailUpdate(habit: currentHabit!, at: index!)
             
         }
     }

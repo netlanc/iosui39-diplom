@@ -1,35 +1,31 @@
 import UIKit
 
-protocol HabitDetailsUpdateDelegate: AnyObject {
+protocol HabitDetailsDelegate: AnyObject {
     func habitDetailUpdate(habit: Habit, at index: Int)
-}
-
-protocol HabitDetailsDeleteDelegate: AnyObject {
+    
     func habitDetailDelete(at index: Int)
 }
 
-extension HabitDetailsViewController: HabitDetailsUpdateDelegate, HabitDetailsDeleteDelegate {
+extension HabitDetailsViewController: HabitDetailsDelegate {
     func habitDetailUpdate(habit: Habit, at index: Int) {
         
         currentHabit = habit
         navigationItem.title = habit.name
         
         navigationController?.popToRootViewController(animated: true)
-        habitDetailsUpdateDelegate?.habitDetailUpdate(habit: habit, at: index)
+        habitDetailsDelegate?.habitDetailUpdate(habit: habit, at: index)
     }
     
     func habitDetailDelete(at index: Int) {
     
         navigationController?.popToRootViewController(animated: true)
-        habitDetailsDeleteDelegate?.habitDetailDelete(at: index)
+        habitDetailsDelegate?.habitDetailDelete(at: index)
     }
 }
 
 class HabitDetailsViewController: UIViewController {
     
-    weak var habitDetailsUpdateDelegate: HabitDetailsUpdateDelegate?
-    
-    weak var habitDetailsDeleteDelegate: HabitDetailsDeleteDelegate?
+    weak var habitDetailsDelegate: HabitDetailsDelegate?
     
     private var index: Int
     private var currentHabit: Habit
@@ -105,8 +101,8 @@ class HabitDetailsViewController: UIViewController {
     @objc private func editHabit() {
         let habitViewController = HabitViewController(habit: currentHabit, index: index)
         
-        habitViewController.habitUpdateDelegate = self  // Передача делегата
-        habitViewController.habitDeleteDelegate = self  // Передача делегата
+//        habitViewController.habitsDelegate = self  // Передача делегата
+        habitViewController.habitDetailsDelegate = self  // Передача делегата
         
         let navigationHabitController = UINavigationController(rootViewController: habitViewController)
         navigationHabitController.modalPresentationStyle = .fullScreen

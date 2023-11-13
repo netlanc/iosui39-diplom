@@ -2,7 +2,7 @@ import UIKit
 
 class HabitsCollectionViewCell: UICollectionViewCell {
     
-    weak var progressBarUpdateDelegete: ProgressBarUpdateDelegate?
+    weak var progressBarUpdateDelegete: HabitsDelegate?
     
     private var currentHabit = Habit(name: "", date: Date(), color: UIColor())
     
