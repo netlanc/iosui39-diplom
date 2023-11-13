@@ -24,17 +24,17 @@
                                 <color key="textColor" name="CustomPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="AppIcon-120px-60pt" translatesAutoresizingMaskIntoConstraints="NO" id="Bpx-Vv-mNZ">
-                                <rect key="frame" x="136.66666666666666" y="366" width="119.99999999999997" height="120"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="AppIcon-120px-c" translatesAutoresizingMaskIntoConstraints="NO" id="ib0-YD-sGN">
+                                <rect key="frame" x="136.66666666666666" y="378.66666666666669" width="119.99999999999997" height="120"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Bpx-Vv-mNZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1E8-ZN-xVk"/>
-                            <constraint firstItem="Bpx-Vv-mNZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MPS-DA-6w5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fRj-VC-yYc" secondAttribute="bottom" constant="50" id="T3v-Jt-Dlc"/>
+                            <constraint firstItem="ib0-YD-sGN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m72-y7-84z"/>
                             <constraint firstItem="fRj-VC-yYc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nZU-Eg-DBe"/>
+                            <constraint firstItem="ib0-YD-sGN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="tyj-oh-Mfq"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -44,7 +44,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon-120px-60pt" width="120" height="120"/>
+        <image name="AppIcon-120px-c" width="120" height="120"/>
         <namedColor name="CustomPurple">
             <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

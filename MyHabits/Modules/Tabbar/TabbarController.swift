@@ -57,7 +57,7 @@ class TabbarController: UITabBarController {
             habitsTabNavigationControoller,
             infoTabNavigationController
         ]
-        self.selectedIndex = 1
+        self.selectedIndex = 0
     }
     
 }

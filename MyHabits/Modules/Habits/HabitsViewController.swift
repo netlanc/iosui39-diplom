@@ -1,123 +1,168 @@
 import UIKit
 
+
+protocol HabitsCreateDelegate: AnyObject {
+    func habitCreate()
+}
+
+protocol ProgressBarUpdateDelegate: AnyObject {
+    func reloadProgressBar()
+}
+
+extension HabitsViewController: HabitsCreateDelegate, HabitDetailsDeleteDelegate, ProgressBarUpdateDelegate, HabitDetailsUpdateDelegate {
+    
+    func habitCreate() {
+        self.collectionView.reloadData()
+    }
+    
+    func habitDetailDelete(at index: Int) {
+        self.collectionView.deleteItems(at: [IndexPath(item: index, section: 1)])
+        reloadProgressBar()
+    }
+    
+    func reloadProgressBar() {
+        self.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+    }
+    
+    func habitDetailUpdate(habit: Habit, at index: Int) {
+        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 1)])
+    }
+}
+
 class HabitsViewController: UIViewController {
-    
-    // MARK: - Properties
-    
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.backgroundColor = .white
-        
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
-    }()
-    
-    private lazy var contentView: UIView = {
-        let contentView = UIView()
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return contentView
-    }()
-    
-    private lazy var borderView: UIView = {
 
-        let border = UIView()
+    
+    private lazy var collectionView: UICollectionView = {
+    
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         
-        border.backgroundColor = .systemGray2
-        border.translatesAutoresizingMaskIntoConstraints = false
+        layout.sectionInset = UIEdgeInsets(top: 22, left: 16, bottom: 0, right: 16)
+//        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.height)
         
-        return border
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
     }()
     
-    private lazy var borderBottomView: UIView = {
-
-        let border = UIView()
-        
-        border.backgroundColor = .systemGray2
-        border.translatesAutoresizingMaskIntoConstraints = false
-        
-        return border
-    }()
-    
-    // todo: временно, не забыть удалить
-    private lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        
-        titleLabel.text = "Болванка"
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .customGrayLite
-        self.title = "Привычки"
-        
-        
-        view.addSubview(borderView)
-        view.addSubview(scrollView)
-        view.addSubview(borderBottomView)
-        
-        scrollView.addSubview(contentView)
-        
-        contentView.addSubview(titleLabel);
-        
+        setupNavigation()
+        setupHabbits()
         setupConstraints()
         
     }
-    
-    // MARK: - Methods
 
-    func setupConstraints() {
+    private func setupHabbits() {
         
-        let safeAreaGuide = view.safeAreaLayoutGuide
+        view.backgroundColor = .customGrayLite
         
+        view.addSubview(collectionView)
         
-        NSLayoutConstraint.activate([
-            borderView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            borderView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            borderView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-            borderView.heightAnchor.constraint(equalToConstant: 0.5),
-        ])
+        collectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: "ProgressCell")
+        collectionView.register(HabitsCollectionViewCell.self, forCellWithReuseIdentifier: "HabitsCell")
         
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18),
-        ])
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: borderView.bottomAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: borderBottomView.topAnchor)
-        ])
+    }
+
+    private func setupNavigation() {
         
-        NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-        ])
+        navigationItem.title = "Сегодня"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newHabit))
+        navigationItem.rightBarButtonItem?.tintColor = .customPurple
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    private func setupConstraints() {
+        
+        let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            borderBottomView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            borderBottomView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            borderBottomView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-            borderBottomView.heightAnchor.constraint(equalToConstant: 0.5),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
         ])
         
     }
 
+    @objc private func newHabit() {
+        let habitViewController = HabitViewController(habit: nil, index: nil)
+        
+        habitViewController.habitCreateDelegate = self
+        
+        let navigationHabitController = UINavigationController(rootViewController: habitViewController)
+        navigationHabitController.modalPresentationStyle = .fullScreen
+        self.present(navigationHabitController, animated: true)
+    }
 
+}
+
+
+extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let indexSection = indexPath.section
+        let indexRow = indexPath.row
+        
+        if indexSection == 0 {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgressCell", for: indexPath) as! ProgressCollectionViewCell
+            
+            let percent = HabitsStore.shared.habits.count > 0 ? HabitsStore.shared.todayProgress:0.0
+            
+            cell.setupProgress(percent)
+            
+            return cell
+
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitsCell", for: indexPath) as! HabitsCollectionViewCell
+            cell.progressBarUpdateDelegete = self
+            cell.setupHabit(HabitsStore.shared.habits[indexRow])
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (section == 0) ? 1 : HabitsStore.shared.habits.count
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section > 0 {
+            let habitDetailsViewController = HabitDetailsViewController(index: indexPath.row)
+            habitDetailsViewController.habitDetailsUpdateDelegate = self
+            habitDetailsViewController.habitDetailsDeleteDelegate = self
+            navigationController?.pushViewController(habitDetailsViewController, animated: false)
+            
+        }
+        collectionView.reloadData()
+    }
+    
+}
+
+extension HabitsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = view.safeAreaLayoutGuide.layoutFrame.width - 32
+        var height: Int = 60
+        if (indexPath.section > 0) {
+            height = 130
+        }
+        return CGSize(width: Int(width), height: height)
+    }
 }
 

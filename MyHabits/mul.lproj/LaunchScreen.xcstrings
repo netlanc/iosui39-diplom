@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "fRj-VC-yYc.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"MyHabits\"; ObjectID = \"fRj-VC-yYc\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MyHabits"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
