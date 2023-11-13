@@ -306,7 +306,6 @@ class HabitViewController: UIViewController {
     
     @objc private func openAlertDeleteHabit() {
         if let textHabit = titleTextField.text {
-            print("textHabit", textHabit)
             messageDeleteAlertController.message = messageDeleteAlertController.message?.replacingOccurrences(of: "_title_habbit_", with: (textHabit != "") ? "\n\"\(textHabit)\"": "")
         }
         self.present(messageDeleteAlertController, animated: true)

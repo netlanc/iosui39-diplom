@@ -27,7 +27,6 @@ class HabitsCollectionViewCell: UICollectionViewCell {
     private let countLabel: UILabel = {
         let countLabel = UILabel()
         
-        countLabel.text = "Cчетчик "
         countLabel.textColor = .systemGray2
         countLabel.font = .systemFont(ofSize: 12, weight: .regular)
         
@@ -103,7 +102,7 @@ class HabitsCollectionViewCell: UICollectionViewCell {
         
         noteTimeLabel.text = currentHabit.dateString
         
-        countLabel.text? += String(currentHabit.trackDates.count)
+        countLabel.text = "Счетчик \(currentHabit.trackDates.count)"
         
         checkButton.tintColor = currentHabit.color
         

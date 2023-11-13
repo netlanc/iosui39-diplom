@@ -25,7 +25,9 @@ extension HabitsViewController: HabitsCreateDelegate, HabitDetailsDeleteDelegate
     }
     
     func habitDetailUpdate(habit: Habit, at index: Int) {
-        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 1)])
+        print(index)
+        self.collectionView.reloadData()
+//        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 1)])
     }
 }
 
