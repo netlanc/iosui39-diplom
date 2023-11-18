@@ -70,10 +70,10 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func setupProgress(_ percent: Float) {
+    func setupProgress(_ countHabit: Int, _ percent: Float) {
         
         progressBarView.setProgress(percent, animated: true)
-        titleLabel.text = (percent == nil) ? "Добавьте первую привычку" : "\(Int(percent * 100))%"
+        titleLabel.text = (countHabit == 0) ? "Добавьте первую привычку" : "\(Int(percent * 100))%"
         percentLabel.text = (percent == 1) ? "На сегодня всё!": "Всё получится!"
     }
 }

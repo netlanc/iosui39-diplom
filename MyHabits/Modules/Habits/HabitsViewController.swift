@@ -115,9 +115,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgressCell", for: indexPath) as! ProgressCollectionViewCell
             
-            let percent = HabitsStore.shared.habits.count > 0 ? HabitsStore.shared.todayProgress:0.0
-            
-            cell.setupProgress(percent)
+            cell.setupProgress(HabitsStore.shared.habits.count, HabitsStore.shared.todayProgress)
             
             return cell
 

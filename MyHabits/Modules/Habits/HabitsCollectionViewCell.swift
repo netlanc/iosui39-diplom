@@ -106,7 +106,7 @@ class HabitsCollectionViewCell: UICollectionViewCell {
         
         checkButton.tintColor = currentHabit?.color
         
-        if ((currentHabit?.isAlreadyTakenToday) != nil) {
+        if ((currentHabit?.isAlreadyTakenToday) != false) {
             setImageCheckButton("checkmark.circle.fill")
         }
     }
