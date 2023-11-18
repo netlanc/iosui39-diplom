@@ -4,7 +4,7 @@ class HabitsCollectionViewCell: UICollectionViewCell {
     
     weak var progressBarUpdateDelegete: HabitsDelegate?
     
-    private var currentHabit = Habit(name: "", date: Date(), color: UIColor())
+    private var currentHabit: Habit?
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -48,7 +48,7 @@ class HabitsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupCeil()
+        setupCell()
         setupConstraints()
     }
 
@@ -56,7 +56,7 @@ class HabitsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupCeil() {
+    private func setupCell() {
         
         backgroundColor = .white
         layer.cornerRadius = 6
@@ -97,29 +97,29 @@ class HabitsCollectionViewCell: UICollectionViewCell {
         
         currentHabit = habit
         
-        titleLabel.text = currentHabit.name
-        titleLabel.textColor = currentHabit.color
+        titleLabel.text = currentHabit?.name
+        titleLabel.textColor = currentHabit?.color
         
-        noteTimeLabel.text = currentHabit.dateString
+        noteTimeLabel.text = currentHabit?.dateString
         
-        countLabel.text = "Счетчик \(currentHabit.trackDates.count)"
+        countLabel.text = "Счетчик \(currentHabit?.trackDates.count ?? 0)"
         
-        checkButton.tintColor = currentHabit.color
+        checkButton.tintColor = currentHabit?.color
         
-        if currentHabit.isAlreadyTakenToday {
+        if ((currentHabit?.isAlreadyTakenToday) != nil) {
             setImageCheckButton("checkmark.circle.fill")
         }
     }
     
     @objc private func checkHabit() {
         
-        if !currentHabit.isAlreadyTakenToday {
+        if !currentHabit!.isAlreadyTakenToday {
             
-            HabitsStore.shared.track(currentHabit)
+            HabitsStore.shared.track(currentHabit!)
             HabitsStore.shared.save()
             
             setImageCheckButton("checkmark.circle.fill")
-            countLabel.text = "Счётчик: \(currentHabit.trackDates.count)"
+            countLabel.text = "Счётчик: \(currentHabit!.trackDates.count)"
             
             self.progressBarUpdateDelegete?.reloadProgressBar()
         }

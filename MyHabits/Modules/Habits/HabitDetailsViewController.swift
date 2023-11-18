@@ -33,7 +33,7 @@ class HabitDetailsViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
-        tableView.backgroundColor = .customGrayLite
+        tableView.backgroundColor = #colorLiteral(red: 0.9686273932, green: 0.9686273932, blue: 0.9686273932, alpha: 1)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -61,7 +61,7 @@ class HabitDetailsViewController: UIViewController {
     
     private func setupDetails() {
         
-        view.backgroundColor = .customGrayLite
+        view.backgroundColor = #colorLiteral(red: 0.9686273932, green: 0.9686273932, blue: 0.9686273932, alpha: 1)
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
@@ -91,7 +91,7 @@ class HabitDetailsViewController: UIViewController {
         
         navigationItem.title = currentHabit.name
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.tintColor = .customPurple
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         let editButton = UIBarButtonItem(title: "Править", style: .plain, target: self, action: #selector(editHabit))
         navigationItem.rightBarButtonItem = editButton
 

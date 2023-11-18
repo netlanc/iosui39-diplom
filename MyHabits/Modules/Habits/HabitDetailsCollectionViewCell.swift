@@ -9,7 +9,7 @@ class HabitDetailsCollectionViewCell: UITableViewCell {
         
         backgroundColor = .white
         selectionStyle = .none
-        tintColor = .customPurple
+        tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         formatter.dateFormat = "dd MMMM YYYY"
         formatter.locale = .init(identifier: "ru_RU")
@@ -20,7 +20,6 @@ class HabitDetailsCollectionViewCell: UITableViewCell {
     }
     
     func setupCell(_ indexCell: Int, _ indexHabit: Int) {
-
         
         let dateHabit: [Date] = HabitsStore.shared.dates.reversed()
         
@@ -34,7 +33,6 @@ class HabitDetailsCollectionViewCell: UITableViewCell {
         let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -1, to: yesterday) ?? Date()
         
         let habitDate = dateHabit[indexCell]
-        print("habitDate", habitDate)
 
         if Calendar.current.isDateInToday(habitDate) {
             textLabel?.text = "Сегодня"

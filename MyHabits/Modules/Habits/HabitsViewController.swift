@@ -58,7 +58,7 @@ class HabitsViewController: UIViewController {
 
     private func setupHabbits() {
         
-        view.backgroundColor = .customGrayLite
+        view.backgroundColor = #colorLiteral(red: 0.9686273932, green: 0.9686273932, blue: 0.9686273932, alpha: 1)
         
         view.addSubview(collectionView)
         
@@ -74,7 +74,7 @@ class HabitsViewController: UIViewController {
         
         navigationItem.title = "Сегодня"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newHabit))
-        navigationItem.rightBarButtonItem?.tintColor = .customPurple
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         navigationController?.navigationBar.prefersLargeTitles = true
     }

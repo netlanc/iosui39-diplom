@@ -105,7 +105,7 @@ class HabitViewController: UIViewController {
         let selectTimeLabel = UILabel()
         
         selectTimeLabel.font = .systemFont(ofSize: 17, weight: .regular)
-        selectTimeLabel.textColor = .customPurple
+        selectTimeLabel.textColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         selectTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         return selectTimeLabel
@@ -202,7 +202,7 @@ class HabitViewController: UIViewController {
     
     private func setupFormHabit() {
         
-        view.backgroundColor = .customGrayLite
+        view.backgroundColor = #colorLiteral(red: 0.9686273932, green: 0.9686273932, blue: 0.9686273932, alpha: 1)
         
         view.addSubview(borderView)
         view.addSubview(contentView)
@@ -222,13 +222,13 @@ class HabitViewController: UIViewController {
     private func setupNavigation() {
         
         navigationItem.title = "Сегодня"
-        navigationItem.rightBarButtonItem?.tintColor = .customPurple
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(closeHabit))
-        navigationItem.leftBarButtonItem?.tintColor = .customPurple
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(saveHabit))
-        navigationItem.rightBarButtonItem?.tintColor = .customPurple
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
     }
     
     private func setupConstraints() {

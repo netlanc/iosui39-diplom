@@ -28,7 +28,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         let progressBarView = UIProgressView()
         
         progressBarView.progress = 0.5
-        progressBarView.progressTintColor = .customPurple
+        progressBarView.progressTintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         progressBarView.layer.cornerRadius = 3.5
         progressBarView.clipsToBounds = true
         

@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE257C402AEBB9970076C8BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE257C3F2AEBB9970076C8BD /* ViewController.swift */; };
 		DE257C452AEBB9990076C8BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE257C442AEBB9990076C8BD /* Assets.xcassets */; };
 		DE257C522AEBD94D0076C8BD /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE257C512AEBD94D0076C8BD /* TabbarController.swift */; };
 		DE257C542AEBEB5A0076C8BD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE257C532AEBEB5A0076C8BD /* InfoViewController.swift */; };
 		DE257C582AEBF2490076C8BD /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE257C572AEBF2490076C8BD /* HabitsViewController.swift */; };
-		DE257C5B2AEBF5CD0076C8BD /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE257C5A2AEBF5CD0076C8BD /* SF-Pro-Display-Semibold.otf */; };
-		DE257C5D2AEBF5E40076C8BD /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE257C5C2AEBF5E40076C8BD /* SF-Pro-Text-Semibold.otf */; };
-		DE257C5F2AEBF5F10076C8BD /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE257C5E2AEBF5F10076C8BD /* SF-Pro-Text-Regular.otf */; };
 		DE38DEB22AF95A7600B871BB /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE38DEB12AF95A7600B871BB /* HabitsStore.swift */; };
 		DE38DEB42AF963EE00B871BB /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE38DEB32AF963EE00B871BB /* HabitViewController.swift */; };
 		DE416E272AFEBEB000D92EC8 /* HabitDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE416E262AFEBEB000D92EC8 /* HabitDetailsCollectionViewCell.swift */; };
@@ -28,15 +24,11 @@
 
 /* Begin PBXFileReference section */
 		DE257C382AEBB9970076C8BD /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE257C3F2AEBB9970076C8BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DE257C442AEBB9990076C8BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE257C492AEBB9990076C8BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE257C512AEBD94D0076C8BD /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		DE257C532AEBEB5A0076C8BD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DE257C572AEBF2490076C8BD /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
-		DE257C5A2AEBF5CD0076C8BD /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Semibold.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
-		DE257C5C2AEBF5E40076C8BD /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Semibold.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
-		DE257C5E2AEBF5F10076C8BD /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Regular.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		DE38DEB12AF95A7600B871BB /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		DE38DEB32AF963EE00B871BB /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		DE416E262AFEBEB000D92EC8 /* HabitDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -81,9 +73,7 @@
 				DE7A236B2AF2B5C90083A31B /* AppDelegate.swift */,
 				DE7A236D2AF2B5D40083A31B /* SceneDelegate.swift */,
 				DE257C492AEBB9990076C8BD /* Info.plist */,
-				DE257C592AEBF5950076C8BD /* Fonts */,
 				DE257C4F2AEBD9260076C8BD /* Modules */,
-				DE257C3F2AEBB9970076C8BD /* ViewController.swift */,
 				DE257C442AEBB9990076C8BD /* Assets.xcassets */,
 				DE7A23732AF2C0030083A31B /* LaunchScreen.storyboard */,
 			);
@@ -128,16 +118,6 @@
 				DE416E262AFEBEB000D92EC8 /* HabitDetailsCollectionViewCell.swift */,
 			);
 			path = Habits;
-			sourceTree = "<group>";
-		};
-		DE257C592AEBF5950076C8BD /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				DE257C5C2AEBF5E40076C8BD /* SF-Pro-Text-Semibold.otf */,
-				DE257C5E2AEBF5F10076C8BD /* SF-Pro-Text-Regular.otf */,
-				DE257C5A2AEBF5CD0076C8BD /* SF-Pro-Display-Semibold.otf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		DE38DEB02AF95A5D00B871BB /* Store */ = {
@@ -206,9 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE257C5D2AEBF5E40076C8BD /* SF-Pro-Text-Semibold.otf in Resources */,
-				DE257C5F2AEBF5F10076C8BD /* SF-Pro-Text-Regular.otf in Resources */,
-				DE257C5B2AEBF5CD0076C8BD /* SF-Pro-Display-Semibold.otf in Resources */,
 				DE7A23752AF2C39C0083A31B /* LaunchScreen.storyboard in Resources */,
 				DE257C452AEBB9990076C8BD /* Assets.xcassets in Resources */,
 			);
@@ -223,7 +200,6 @@
 			files = (
 				DE416E272AFEBEB000D92EC8 /* HabitDetailsCollectionViewCell.swift in Sources */,
 				DE38DEB22AF95A7600B871BB /* HabitsStore.swift in Sources */,
-				DE257C402AEBB9970076C8BD /* ViewController.swift in Sources */,
 				DE257C582AEBF2490076C8BD /* HabitsViewController.swift in Sources */,
 				DE8ADAEA2AFE29420086A23A /* HabitsCollectionViewCell.swift in Sources */,
 				DE8ADAEE2AFE98890086A23A /* HabitDetailsViewController.swift in Sources */,

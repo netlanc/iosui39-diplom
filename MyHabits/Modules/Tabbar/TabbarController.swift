@@ -1,6 +1,6 @@
 import UIKit
 
-class TabbarController: UITabBarController {
+class TabBarController: UITabBarController {
     
     // MARK: - Properties
     
@@ -51,7 +51,7 @@ class TabbarController: UITabBarController {
     
     private func setupUI() {
         
-        UITabBar.appearance().tintColor = .customPurple
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.6906365752, green: 0, blue: 0.8297687173, alpha: 1)
         
         self.viewControllers = [
             habitsTabNavigationControoller,
